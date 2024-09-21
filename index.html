@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matches Technology</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            max-width: 100%;
+            height: auto;
+        }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 4px;
+        }
+        nav ul li a:hover {
+            background-color: #ccc;
+        }
+        .content {
+            margin-top: 20px;
+            padding: 20px;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Matches Technology Logo" width="200" height="100">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">主页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#search">搜索</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content" id="content">
+            <!-- 内容区域 -->
+            <section id="home" class="content-section active">
+                <h2>欢迎来到 Matches Technology</h2>
+                <p>我们致力于提供前沿的技术解决方案。</p>
+            </section>
+            <section id="about" class="content-section">
+                <h2>关于我们</h2>
+                <p>在这里描述公司的历史、愿景和团队信息。</p>
+            </section>
+            <section id="search" class="content-section">
+                <h2>搜索</h2>
+                <p>提供搜索框和其他搜索相关的信息。</p>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // 获取所有的导航链接
+        var links = document.querySelectorAll('nav ul li a');
+
+        // 添加点击事件监听器到每一个链接上
+        links.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // 阻止默认行为（即跳转）
+
+                // 获取点击链接的目标ID
+                var targetId = this.getAttribute('href').substring(1);
+
+                // 隐藏所有内容区块
+                var sections = document.querySelectorAll('.content-section');
+                sections.forEach(function(section) {
+                    section.classList.remove('active');
+                });
+
+                // 显示目标内容区块
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2024 Matches Technology. All rights reserved.</p>
+    </footer>
+</body>
+</html>
